@@ -1,4 +1,4 @@
-import UsuarioService from '../services/UsuarioService.js';
+const UsuarioService = require('../services/UsuarioService');
 
 class UsuarioController {
     async create(req, res) {
@@ -59,4 +59,4 @@ class UsuarioController {
     }
 }
 
-export default new UsuarioController();
+module.exports = new UsuarioController();

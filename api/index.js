@@ -1,5 +1,5 @@
 const express = require('express');
-
+const cors = require('cors'); // Adicione esta linha
 const livroRoutes = require('./routes/livroRoutes');
 const categoriaRoutes = require('./routes/categoriaRoutes');
 const autorRoutes = require('./routes/AutorRoutes');
@@ -10,7 +10,7 @@ const statusRoutes = require('./routes/StatusRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(json());
+app.use(express.json()); // Corrija para express.json()
 app.use(cors());
 
 app.get('/api', (req, res) => {
@@ -23,7 +23,6 @@ app.use('/api/autores', autorRoutes);
 app.use('/api/usuarios', usuarioRoutes);
 app.use('/api/emprestimos', emprestimoRoutes);
 app.use('/api/status', statusRoutes);
-
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);

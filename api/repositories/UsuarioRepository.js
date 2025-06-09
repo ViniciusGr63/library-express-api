@@ -1,4 +1,4 @@
-import prisma from '../../prisma/PrismaClient.js';
+const prisma = require('../../prisma/PrismaClient');
 
 class UsuarioRepository {
   async create(data) {
@@ -40,4 +40,4 @@ class UsuarioRepository {
   }
 }
 
-export default new UsuarioRepository();
+module.exports = new UsuarioRepository();

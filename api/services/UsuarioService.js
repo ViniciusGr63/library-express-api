@@ -1,12 +1,12 @@
-import { findAll, findById, create, update, delete as deleteUsuario } from '../repositories/UsuarioRepository.js';
+const UsuarioRepository = require('../repositories/UsuarioRepository');
 
 class UsuarioService {
     async getAllUsuarios() {
-        return await findAll();
+        return await UsuarioRepository.findAll();
     }
 
     async getUsuarioById(id) {
-        const usuario = await findById(id);
+        const usuario = await UsuarioRepository.findById(id);
         if (!usuario) {
             throw new Error('Usuário não encontrado');
         }
@@ -14,24 +14,24 @@ class UsuarioService {
     }
 
     async createUsuario(data) {
-        return await create(data);
+        return await UsuarioRepository.create(data);
     }
 
     async updateUsuario(id, data) {
-        const usuario = await findById(id);
+        const usuario = await UsuarioRepository.findById(id);
         if (!usuario) {
             throw new Error('Usuário não encontrado');
         }
-        return await update(id, data);
+        return await UsuarioRepository.update(id, data);
     }
 
     async deleteUsuario(id) {
-        const usuario = await findById(id);
+        const usuario = await UsuarioRepository.findById(id);
         if (!usuario) {
             throw new Error('Usuário não encontrado');
         }
-        return await deleteUsuario(id);
+        return await UsuarioRepository.delete(id);
     }
 }
 
-export default new UsuarioService();
+module.exports = new UsuarioService();
