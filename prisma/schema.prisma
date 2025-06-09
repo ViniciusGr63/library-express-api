@@ -24,9 +24,48 @@ model Autor {
 }
 
 model Livro {
-  id             Int       @id @default(autoincrement())
+  id             Int           @id @default(autoincrement())
   titulo         String
   anoPublicacao  Int?
+<<<<<<< HEAD
+  disponivel     Boolean       @default(true)
+
+  autorId        Int
+  autor          Autor         @relation(fields: [autorId], references: [id])
+  
+  categoriaId    Int
+  categoria      Categoria     @relation(fields: [categoriaId], references: [id])
+
+  emprestimos    Emprestimo[]  // Novo relacionamento
+}
+
+model Usuario {
+  id            Int           @id @default(autoincrement())
+  nome          String
+  email         String        @unique
+
+  emprestimos   Emprestimo[]  // Novo relacionamento
+}
+
+model Status {
+  id           Int           @id @default(autoincrement())
+  nome         String        @unique
+
+  emprestimos  Emprestimo[]  // Relacionamento 1:N com Emprestimo
+}
+
+model Emprestimo {
+  id             Int       @id @default(autoincrement())
+  livroId        Int
+  usuarioId      Int
+  statusId       Int
+  dataEmprestimo DateTime
+  dataDevolucao  DateTime
+
+  livro          Livro     @relation(fields: [livroId], references: [id])
+  usuario        Usuario   @relation(fields: [usuarioId], references: [id])
+  status         Status    @relation(fields: [statusId], references: [id])
+=======
   disponivel     Boolean   @default(true)
   autorId        Int
   autor          Autor     @relation(fields: [autorId], references: [id])
@@ -53,4 +92,5 @@ model Emprestimo {
   dataEmprestimo DateTime
   dataDevolucao  DateTime?
   ativo          Boolean  @default(true)
+>>>>>>> 1dc982bcf6f98f3acd74d9e64c4831988ca87987
 }
