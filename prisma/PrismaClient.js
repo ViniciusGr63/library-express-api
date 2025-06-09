@@ -1,7 +1,4 @@
 const { PrismaClient } = require('@prisma/client');
-
- // ✅ AJUSTE o caminho conforme necessário
-
 const prisma = new PrismaClient();
 
 module.exports = prisma;
@@ -18,3 +15,4 @@ async function testConnection() {
 }
 
 testConnection();
+

@@ -11,13 +11,15 @@ class LivroController {
   }
 
   async getAll(req, res) {
-    try {
-      const livros = await LivroService.getAllBooks();
-      res.status(200).json(livros);
-    } catch (error) {
-      res.status(500).json({ error: 'Erro ao buscar livros' });
-    }
+  try {
+    const livros = await LivroService.getAllBooks();
+    res.status(200).json(livros); // será array vazio se não tiver livros
+  } catch (error) {
+    console.error('Erro no LivroController.getAll:', error);
+    res.status(500).json({ error: 'Erro ao buscar livros' });
   }
+}
+
 
   async getById(req, res) {
     try {

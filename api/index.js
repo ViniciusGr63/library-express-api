@@ -2,7 +2,7 @@ const express = require('express');
 
 const livroRoutes = require('./routes/livroRoutes');
 const categoriaRoutes = require('./routes/categoriaRoutes');
-
+const autorRoutes = require('./routes/AutorRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -18,7 +18,7 @@ app.get('/api', (req, res) => {
 
 app.use('/api/livros', livroRoutes);
 app.use('/api/categorias', categoriaRoutes);
-
+app.use('/api/autores', autorRoutes);
 
 
 app.listen(PORT, () => {

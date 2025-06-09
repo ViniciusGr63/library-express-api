@@ -14,13 +14,13 @@ class LivroRepository {
   }
 
   async findAll() {
-    return prisma.livro.findMany({
-      include: {
-        autor: true,
-        categoria: true,
-      }
-    });
-  }
+  console.log('Buscando livros no banco...');
+  const result = await prisma.livro.findMany({
+    include: { autor: true, categoria: true }
+  });
+  console.log('Livros encontrados:', result);
+  return result;
+}
 
   async findById(id) {
     return prisma.livro.findUnique({
