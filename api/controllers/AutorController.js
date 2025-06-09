@@ -1,4 +1,4 @@
-const AutorService = require('../services/AutorService');
+import AutorService from '../services/AutorService.js';
 
 class AutorController {
   async create(req, res) {
@@ -64,4 +64,4 @@ class AutorController {
   }
 }
 
-module.exports = new AutorController();
+export default new AutorController();

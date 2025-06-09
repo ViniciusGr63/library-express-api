@@ -1,4 +1,4 @@
-const prisma = require('../../prisma/PrismaClient');
+import prisma from '../../prisma/PrismaClient.js';
 
 class LivroRepository {
   async create(data) {
@@ -14,13 +14,13 @@ class LivroRepository {
   }
 
   async findAll() {
-  console.log('Buscando livros no banco...');
-  const result = await prisma.livro.findMany({
-    include: { autor: true, categoria: true }
-  });
-  console.log('Livros encontrados:', result);
-  return result;
-}
+    console.log('Buscando livros no banco...');
+    const result = await prisma.livro.findMany({
+      include: { autor: true, categoria: true }
+    });
+    console.log('Livros encontrados:', result);
+    return result;
+  }
 
   async findById(id) {
     return prisma.livro.findUnique({
@@ -56,4 +56,4 @@ class LivroRepository {
   }
 }
 
-module.exports = new LivroRepository();
+export default new LivroRepository();

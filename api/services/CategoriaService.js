@@ -1,8 +1,8 @@
-const CategoriaRepository = require('../repositories/CategoriaRepository');
+import CategoriaRepository from '../repositories/CategoriaRepository.js';
 
 class CategoriaService {
   async createCategoria(data) {
-  
+
     return CategoriaRepository.createCategoria(data);
   }
 
@@ -15,14 +15,14 @@ class CategoriaService {
   }
 
   async updateCategoria(id, data) {
-   
+
     return CategoriaRepository.updateCategoria(id, data);
   }
 
   async deleteCategoria(id) {
- 
+
     return CategoriaRepository.deleteCategoria(id);
   }
 }
 
-module.exports = new CategoriaService();
+export default new CategoriaService();
