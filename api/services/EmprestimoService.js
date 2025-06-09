@@ -1,25 +1,25 @@
-import EmprestimoRepository from '../repositories/EmprestimoRepository.js';
+const EmprestimoRepository = require('../repositories/EmprestimoRepository');
 
 class EmprestimoService {
-    async criarEmprestimo(dadosEmprestimo) {
-        return await EmprestimoRepository.create(dadosEmprestimo);
-    }
+  async createEmprestimo(data) {
+    return EmprestimoRepository.create(data);
+  }
 
-    async listarEmprestimos() {
-        return await EmprestimoRepository.findAll();
-    }
+  async getAllEmprestimos() {
+    return EmprestimoRepository.findAll();
+  }
 
-    async buscarPorId(id) {
-        return await EmprestimoRepository.findById(id);
-    }
+  async getEmprestimoById(id) {
+    return EmprestimoRepository.findById(id);
+  }
 
-    async atualizarEmprestimo(id, dadosAtualizados) {
-        return await EmprestimoRepository.update(id, dadosAtualizados);
-    }
+  async updateEmprestimo(id, data) {
+    return EmprestimoRepository.update(id, data);
+  }
 
-    async deletarEmprestimo(id) {
-        return await EmprestimoRepository.delete(id);
-    }
+  async deleteEmprestimo(id) {
+    return EmprestimoRepository.delete(id);
+  }
 }
 
-export default new EmprestimoService();
+module.exports = new EmprestimoService();
