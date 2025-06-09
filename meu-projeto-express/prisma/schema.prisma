@@ -1,0 +1,38 @@
+// This is your Prisma schema file
+// Learn more at https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Categoria {
+  id         Int     @id @default(autoincrement())
+  nome       String
+  descricao  String
+  livros     Livro[] // Relacionamento 1:N com Livro
+}
+
+model Autor {
+  id     Int     @id @default(autoincrement())
+  nome   String
+  livros Livro[] // Relacionamento 1:N com Livro
+}
+
+model Livro {
+  id             Int       @id @default(autoincrement())
+  titulo         String
+  anoPublicacao  Int?
+  disponivel     Boolean   @default(true)
+  
+  autorId        Int
+  autor          Autor     @relation(fields: [autorId], references: [id])
+  
+  categoriaId    Int
+  categoria      Categoria @relation(fields: [categoriaId], references: [id])
+}
