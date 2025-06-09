@@ -1,4 +1,4 @@
-const AutorRepository = require('../repositories/AutorRepository');
+import AutorRepository from '../repositories/AutorRepository.js';
 
 class AutorService {
   async createAutor(data) {
@@ -22,4 +22,4 @@ class AutorService {
   }
 }
 
-module.exports = new AutorService();
+export default new AutorService();

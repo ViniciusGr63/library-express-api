@@ -1,4 +1,4 @@
-const LivroService = require('../services/LivroService');
+import LivroService from '../services/LivroService.js';
 
 class LivroController {
   async create(req, res) {
@@ -11,14 +11,14 @@ class LivroController {
   }
 
   async getAll(req, res) {
-  try {
-    const livros = await LivroService.getAllBooks();
-    res.status(200).json(livros); // será array vazio se não tiver livros
-  } catch (error) {
-    console.error('Erro no LivroController.getAll:', error);
-    res.status(500).json({ error: 'Erro ao buscar livros' });
+    try {
+      const livros = await LivroService.getAllBooks();
+      res.status(200).json(livros); // será array vazio se não tiver livros
+    } catch (error) {
+      console.error('Erro no LivroController.getAll:', error);
+      res.status(500).json({ error: 'Erro ao buscar livros' });
+    }
   }
-}
 
 
   async getById(req, res) {
@@ -61,4 +61,4 @@ class LivroController {
   }
 }
 
-module.exports = new LivroController();
+export default new LivroController();

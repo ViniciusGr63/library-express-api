@@ -1,8 +1,8 @@
-const prisma = require('../../prisma/PrismaClient');
+import { autor } from '../../prisma/PrismaClient.js';
 
 class AutorRepository {
   async create(data) {
-    return prisma.autor.create({
+    return autor.create({
       data: {
         nome: data.nome,
       },
@@ -10,13 +10,13 @@ class AutorRepository {
   }
 
   async findAll() {
-    return prisma.autor.findMany({
+    return autor.findMany({
       include: { livros: true }, // traz livros relacionados
     });
   }
 
   async findById(id) {
-    return prisma.autor.findUnique({
+    return autor.findUnique({
       where: { id },
       include: { livros: true },
     });
@@ -26,7 +26,7 @@ class AutorRepository {
     const updateData = {};
     if (data.nome !== undefined) updateData.nome = data.nome;
 
-    return prisma.autor.update({
+    return autor.update({
       where: { id },
       data: updateData,
       include: { livros: true },
@@ -34,10 +34,10 @@ class AutorRepository {
   }
 
   async delete(id) {
-    return prisma.autor.delete({
+    return autor.delete({
       where: { id },
     });
   }
 }
 
-module.exports = new AutorRepository();
+export default new AutorRepository();
