@@ -1,4 +1,6 @@
-const { PrismaClient } = require('../generated/prisma'); // ✅ AJUSTE o caminho conforme necessário
+const { PrismaClient } = require('@prisma/client');
+
+ // ✅ AJUSTE o caminho conforme necessário
 
 const prisma = new PrismaClient();
 
