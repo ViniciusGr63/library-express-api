@@ -14,7 +14,18 @@ app.use(express.json()); // Corrija para express.json()
 app.use(cors());
 
 app.get('/api', (req, res) => {
-  res.json({ libraryExpressApi: 'API de Gestão de Biblioteca está online!' });
+  res.json({
+    message: 'Bem-vindo à API de Gestão de Biblioteca!',
+    descricao: 'Esta API permite gerenciar livros, autores, categorias, usuários, empréstimos e status de uma biblioteca.',
+    endpoints: {
+      livros: '/api/livros',
+      autores: '/api/autores',
+      categorias: '/api/categorias',
+      usuarios: '/api/usuarios',
+      emprestimos: '/api/emprestimos',
+      status: '/api/status'
+    }
+  });
 });
 
 app.use('/api/livros', livroRoutes);
