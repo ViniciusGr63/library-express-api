@@ -1,33 +1,32 @@
 const prisma = require('../../prisma/PrismaClient');
 
-
 class CategoriaRepository {
   async createCategoria(data) {
-    return prisma.categoria.create({ data });
+    return prisma.categorias.create({ data });
   }
 
   async getAllCategorias() {
-    return prisma.categoria.findMany({
+    return prisma.categorias.findMany({
       include: { livros: true }, // inclui os livros relacionados
     });
   }
 
   async getCategoriaById(id) {
-    return prisma.categoria.findUnique({
+    return prisma.categorias.findUnique({
       where: { id },
       include: { livros: true },
     });
   }
 
   async updateCategoria(id, data) {
-    return prisma.categoria.update({
+    return prisma.categorias.update({
       where: { id },
       data,
     });
   }
 
   async deleteCategoria(id) {
-    return prisma.categoria.delete({
+    return prisma.categorias.delete({
       where: { id },
     });
   }

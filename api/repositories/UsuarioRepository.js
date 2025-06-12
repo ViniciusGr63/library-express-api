@@ -2,7 +2,7 @@ const prisma = require('../../prisma/PrismaClient');
 
 class UsuarioRepository {
   async create(data) {
-    return prisma.usuario.create({
+    return prisma.usuarios.create({
       data: {
         nome: data.nome,
         email: data.email,
@@ -12,17 +12,17 @@ class UsuarioRepository {
   }
 
   async findAll() {
-    return prisma.usuario.findMany();
+    return prisma.usuarios.findMany();
   }
 
   async findById(id) {
-    return prisma.usuario.findUnique({
+    return prisma.usuarios.findUnique({
       where: { id }
     });
   }
 
   async update(id, data) {
-    return prisma.usuario.update({
+    return prisma.usuarios.update({
       where: { id },
       data: {
         nome: data.nome,
@@ -34,7 +34,7 @@ class UsuarioRepository {
   }
 
   async delete(id) {
-    return prisma.usuario.delete({
+    return prisma.usuarios.delete({
       where: { id }
     });
   }

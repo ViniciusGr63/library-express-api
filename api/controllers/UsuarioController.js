@@ -6,6 +6,7 @@ class UsuarioController {
             const usuario = await UsuarioService.createUsuario(req.body);
             res.status(201).json(usuario);
         } catch (error) {
+            console.error('Erro ao criar usuário:', error);
             res.status(500).json({ error: 'Erro ao criar o usuário' });
         }
     }
@@ -15,6 +16,7 @@ class UsuarioController {
             const usuarios = await UsuarioService.getAllUsuarios();
             res.status(200).json(usuarios);
         } catch (error) {
+            console.error('Erro ao buscar usuários:', error);
             res.status(500).json({ error: 'Erro ao buscar usuários' });
         }
     }

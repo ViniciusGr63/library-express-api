@@ -2,57 +2,52 @@ const prisma = require('../../prisma/PrismaClient');
 
 class EmprestimoRepository {
   async create(data) {
-    return prisma.emprestimo.create({
+    return prisma.emprestimos.create({
       data: {
-        livroId: data.livroId,
-        usuarioId: data.usuarioId,
-        dataEmprestimo: data.dataEmprestimo,
-        dataDevolucao: data.dataDevolucao,
-        statusId: data.statusId,
+        livro_id: data.livro_id,
+        usuario_id: data.usuario_id,
+        data_emprestimo: data.data_emprestimo,
+        data_devolucao: data.data_devolucao,
       },
       include: {
-        livro: true,
-        usuario: true,
-        status: true,
+        livros: true,
+        usuarios: true,
       },
     });
   }
 
   async findAll() {
-    return prisma.emprestimo.findMany({
+    return prisma.emprestimos.findMany({
       include: {
-        livro: true,
-        usuario: true,
-        status: true,
+        livros: true,
+        usuarios: true,
       },
     });
   }
 
   async findById(id) {
-    return prisma.emprestimo.findUnique({
+    return prisma.emprestimos.findUnique({
       where: { id },
       include: {
-        livro: true,
-        usuario: true,
-        status: true,
+        livros: true,
+        usuarios: true,
       },
     });
   }
 
   async update(id, data) {
-    return prisma.emprestimo.update({
+    return prisma.emprestimos.update({
       where: { id },
       data,
       include: {
-        livro: true,
-        usuario: true,
-        status: true,
+        livros: true,
+        usuarios: true,
       },
     });
   }
 
   async delete(id) {
-    return prisma.emprestimo.delete({
+    return prisma.emprestimos.delete({
       where: { id },
     });
   }
